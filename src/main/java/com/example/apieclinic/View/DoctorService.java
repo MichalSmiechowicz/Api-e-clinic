@@ -1,4 +1,4 @@
-package com.example.apieclinic.View;
+package com.example.apieclinic.view;
 
 import com.example.apieclinic.model.entity.Doctor;
 import com.example.apieclinic.model.entity.WorkHours;

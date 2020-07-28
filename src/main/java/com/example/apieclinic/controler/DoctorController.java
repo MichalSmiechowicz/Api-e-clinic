@@ -1,6 +1,6 @@
 package com.example.apieclinic.controler;
 
-import com.example.apieclinic.View.DoctorServiceImpl;
+import com.example.apieclinic.view.DoctorServiceImpl;
 import com.example.apieclinic.model.entity.Doctor;
 import com.example.apieclinic.model.entity.WorkHours;
 import org.springframework.beans.factory.annotation.Autowired;

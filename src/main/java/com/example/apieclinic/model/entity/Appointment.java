@@ -18,8 +18,8 @@ public class Appointment {
     private Integer type;
     private String diagnosis;
     private String recommendations;
-    @ManyToOne
-    private User user;
+//    @ManyToOne
+//    private User user;
     @ManyToOne
     private Doctor doctor;
 }

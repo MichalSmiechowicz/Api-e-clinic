@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Data
 @Entity
@@ -24,5 +25,8 @@ public class User {
     private String gender;
     private String chronicDiseases;
     private String avatarPath;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_USERID")
+    private Set<Appointment> appointments;
 
 }
