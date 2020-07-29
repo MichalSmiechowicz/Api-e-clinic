@@ -1,7 +1,6 @@
 package com.example.apieclinic.view;
 
 import com.example.apieclinic.model.entity.Appointment;
-import com.example.apieclinic.model.entity.Prescription;
 import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.repository.AppointmentRepo;
 import com.example.apieclinic.model.repository.PrescriptionRepo;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements com.example.apieclinic.view.UserService {
 
     @Autowired
     UserRepo userRepo;

@@ -1,5 +1,5 @@
 --dummy data
-insert into doctors values(1, 'dehh', '2000-01-11', 'descr', 'mail', 'name', 'pass', 'pesel','phone','spec', 'surname');
+insert into doctors values(1, 'dehh', '2000-01-11', 'descr', 'mail2', 'name', 'pass', 'pesel','phone','spec', 'surname');
 insert into users values(1, 'address', 'avatar path','2000-01-11', ' chronic disease', 'mail', 'm', 'name', 'pass', 'pesel', 'phone', 'surname');
 
 insert into appointments values( 1, '2000-01-11 10:00:00' , 'diagnosis' , 100 , 'recommendation' , 15 , 1 , 1);

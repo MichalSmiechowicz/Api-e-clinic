@@ -16,23 +16,23 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @PostMapping("/addDoctor")
+    @PostMapping("/doctor/addDoctor")
     public void addDoctor(@RequestBody Doctor doctor){
         System.out.println(doctor.toString());
         doctorService.addDoctor(doctor);
     }
 
-    @GetMapping("/doc")
+    @GetMapping("/doctor/doc")
     public List<Doctor> home(){
         return doctorService.getDoctors();
     }
 
-    @PostMapping("/setWorkHours")
+    @PostMapping("/doctor/setWorkHours")
     public void setWorkHours(@RequestBody WorkHours workHours){
         doctorService.addWorkingHours(workHours);
     }
 
-    @GetMapping("/getHoursOfDoc")
+    @GetMapping("/doctor/getHoursOfDoc")
     public List<WorkHours> getHoursOfDoc(@RequestParam("id") Long docID){
         return doctorService.getWorkHours(docID);
     }
