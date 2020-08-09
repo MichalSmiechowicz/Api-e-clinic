@@ -12,7 +12,7 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userID;
     private String name;
     private String surname;
@@ -20,13 +20,13 @@ public class User {
     private Date birthDate;
     private String address;
     private String phone;
+
     private String email;
     private String password;
     private String gender;
     private String chronicDiseases;
     private String avatarPath;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "USER_USERID")
+    @JoinColumn(name = "user_id")
     private Set<Appointment> appointments;
-
 }

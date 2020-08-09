@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface UserService {
+    void addUser(User user);
     Set<Appointment> getAllAppointments(Long userid);
 //    List<Prescription> getAllPrescriptions(Long userid);
     List<User> getUsers();

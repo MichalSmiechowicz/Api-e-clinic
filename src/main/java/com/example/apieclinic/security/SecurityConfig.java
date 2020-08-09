@@ -21,11 +21,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasRole("DOCTOR")
                 .antMatchers("/user/**")
                 .hasRole("USER")
-                .antMatchers("/")
+                .antMatchers("/","/signup")
                 .permitAll()
                 .antMatchers("/h2-console/**")
                 .permitAll()
-                .and().formLogin();
+                .and().httpBasic();
 
         //necessary for h2 to work
         http.csrf().disable();
@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(myUserDetailsService);
+
     }
     @Bean
     public PasswordEncoder getPasswordEncoder(){

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/doctor")
 public class DoctorController {
     private DoctorServiceImpl doctorService;
     @Autowired
@@ -16,23 +17,23 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @PostMapping("/doctor/addDoctor")
+    @PostMapping("/addDoctor")
     public void addDoctor(@RequestBody Doctor doctor){
         System.out.println(doctor.toString());
         doctorService.addDoctor(doctor);
     }
 
-    @GetMapping("/doctor/doc")
+    @GetMapping("/doc")
     public List<Doctor> home(){
         return doctorService.getDoctors();
     }
 
-    @PostMapping("/doctor/setWorkHours")
+    @PostMapping("/setWorkHours")
     public void setWorkHours(@RequestBody WorkHours workHours){
         doctorService.addWorkingHours(workHours);
     }
 
-    @GetMapping("/doctor/getHoursOfDoc")
+    @GetMapping("/getHoursOfDoc")
     public List<WorkHours> getHoursOfDoc(@RequestParam("id") Long docID){
         return doctorService.getWorkHours(docID);
     }

@@ -6,6 +6,7 @@ import com.example.apieclinic.model.repository.UserRepo;
 import com.example.apieclinic.view.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,7 @@ import java.util.Set;
 
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     private UserRepo repo;
@@ -24,11 +26,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user/users")
+    @GetMapping("/users")
     public List<User> getUsers(){
         return userService.getUsers();
     }
-    @GetMapping("/user/prescriptions")
+    @GetMapping("/appointments")
     public Set<Appointment> getPrescriptions(@RequestParam("id") Long userID){
         return userService.getAllAppointments(userID);
     }

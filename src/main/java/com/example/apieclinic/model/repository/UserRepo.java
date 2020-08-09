@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Repository
 public interface UserRepo extends JpaRepository<User, Long> {
+    Boolean existsByEmail(String email);
     User findByUserID(Long id);
     User findByEmail(String email);
     Set<Appointment> findAllAppointmentByUserID(Long userid);

@@ -18,8 +18,12 @@ public class Appointment {
     private Integer type;
     private String diagnosis;
     private String recommendations;
+    @Column(name = "user_id")
+    private Long userId;
+    @Column(name = "doctor_id")
+    private Long doctorId;
 //    @ManyToOne
 //    private User user;
-    @ManyToOne
-    private Doctor doctor;
+//    @ManyToOne
+//    private Doctor doctor;
 }
