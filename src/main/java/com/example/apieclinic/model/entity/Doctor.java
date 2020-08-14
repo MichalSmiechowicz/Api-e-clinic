@@ -13,7 +13,7 @@ import java.util.Set;
 public class Doctor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long doctorID;
     private String name;
     private String surname;
@@ -28,6 +28,7 @@ public class Doctor {
     private String avatarPath;
     @OneToMany(cascade = CascadeType.DETACH)
     @JoinColumn(name = "doctor_id")
+    @JsonIgnore
     private Set<Appointment> appointments;
 
 }

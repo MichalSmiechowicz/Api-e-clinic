@@ -10,11 +10,14 @@ import java.sql.Date;
 @Table(name = "SickLeaves")
 public class SickLeave {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long leavesID;
     private Date startDate;
     private Date endDate;
     private String remarks;
-    @ManyToOne
-    private Appointment appointment;
+    @Column(name = "appointment_id")
+    private Long appointmentId;
+//    @ManyToOne
+//    private Appointment appointment;
+
 }
