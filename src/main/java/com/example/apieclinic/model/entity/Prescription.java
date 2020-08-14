@@ -1,6 +1,8 @@
 package com.example.apieclinic.model.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -9,10 +11,13 @@ import javax.persistence.*;
 @Table(name = "prescription")
 public class Prescription {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long prescriptionID;
     private String content;
-    @ManyToOne
-    private Appointment appointment;
+    @Column(name = "appointment_id")
+    private Long appointmentId;
+
+//    @ManyToOne
+//    private Appointment appointment;
 
 }

@@ -9,10 +9,12 @@ import javax.persistence.*;
 @Table(name = "attached_images")
 public class AttachedImage {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long imageID;
     private String path;
     private String description;
-    @ManyToOne
-    private Appointment appointment;
+    @Column(name = "appointment_id")
+    private Long appointmentId;
+//    @ManyToOne
+//    private Appointment appointment;
 }

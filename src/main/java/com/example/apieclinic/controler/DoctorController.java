@@ -4,6 +4,8 @@ import com.example.apieclinic.view.DoctorServiceImpl;
 import com.example.apieclinic.model.entity.Doctor;
 import com.example.apieclinic.model.entity.WorkHours;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,14 +20,10 @@ public class DoctorController {
     }
 
     @PostMapping("/addDoctor")
-    public void addDoctor(@RequestBody Doctor doctor){
+    public ResponseEntity addDoctor(@RequestBody Doctor doctor){
         System.out.println(doctor.toString());
         doctorService.addDoctor(doctor);
-    }
-
-    @GetMapping("/doc")
-    public List<Doctor> home(){
-        return doctorService.getDoctors();
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("/setWorkHours")

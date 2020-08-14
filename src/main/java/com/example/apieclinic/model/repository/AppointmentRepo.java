@@ -8,6 +8,6 @@ import java.util.Set;
 
 @Repository
 public interface AppointmentRepo extends JpaRepository<Appointment, Long> {
-    Set<Appointment> findByUserId(Long userid);
+    Set<Appointment> findByUserId(Long userId);
 
 }

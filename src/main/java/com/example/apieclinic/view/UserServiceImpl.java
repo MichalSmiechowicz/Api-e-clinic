@@ -2,6 +2,7 @@ package com.example.apieclinic.view;
 
 import com.example.apieclinic.exception.UserAlreadyExistException;
 import com.example.apieclinic.model.entity.Appointment;
+import com.example.apieclinic.model.entity.Prescription;
 import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.repository.AppointmentRepo;
 import com.example.apieclinic.model.repository.PrescriptionRepo;
@@ -33,10 +34,14 @@ public class UserServiceImpl implements com.example.apieclinic.view.UserService 
     }
 
     @Override
+    public Set<Prescription> getPrescription(Long appointmentID) {
+        return prescriptionRepo.findByAppointmentId(appointmentID);
+    }
+
+    @Override
     public Set<Appointment> getAllAppointments(Long userid) {
         User user = userRepo.findByUserID(userid);
-        Set<Appointment> a = user.getAppointments();
-        return a;
+        return user.getAppointments();
 //        return appointmentRepo.findByUser(user);
     }
 

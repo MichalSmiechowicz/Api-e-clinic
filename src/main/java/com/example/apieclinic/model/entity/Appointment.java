@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Data
 @Entity
@@ -11,7 +12,7 @@ import java.sql.Timestamp;
 public class Appointment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long appointmentID;
     private Timestamp dateTime;
     private Integer price;
@@ -22,6 +23,15 @@ public class Appointment {
     private Long userId;
     @Column(name = "doctor_id")
     private Long doctorId;
+    @OneToMany(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "appointment_id")
+    private Set<Prescription> prescriptions;
+    @OneToMany(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "appointment_id")
+    private Set<AttachedImage> attachedImages;
+    @OneToMany(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "appointment_id")
+    private Set<AttachedImage> SickLeaves;
 //    @ManyToOne
 //    private User user;
 //    @ManyToOne

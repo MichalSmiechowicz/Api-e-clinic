@@ -1,14 +1,12 @@
 package com.example.apieclinic.controler;
 
 import com.example.apieclinic.model.entity.Appointment;
+import com.example.apieclinic.model.entity.Prescription;
 import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.repository.UserRepo;
 import com.example.apieclinic.view.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
@@ -31,7 +29,14 @@ public class UserController {
         return userService.getUsers();
     }
     @GetMapping("/appointments")
-    public Set<Appointment> getPrescriptions(@RequestParam("id") Long userID){
+    public Set<Appointment> getAppointments(@RequestParam("id") Long userID){
         return userService.getAllAppointments(userID);
     }
+    @GetMapping("/prescriptions")
+    public Set<Prescription> getPrescription(@RequestParam("id") Long prescriptionID){
+        return userService.getPrescription(prescriptionID);
+    }
+//    @GetMapping("/leaves")
+//    @GetMapping("/images")
+
 }
