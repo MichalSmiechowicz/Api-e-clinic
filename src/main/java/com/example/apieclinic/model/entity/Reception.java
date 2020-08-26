@@ -1,0 +1,30 @@
+package com.example.apieclinic.model.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
+import javax.persistence.*;
+import java.sql.Date;
+import java.util.Set;
+
+@Data
+@Entity
+@Table(name = "reception")
+public class Reception {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long receptionID;
+    private String name;
+    private String surname;
+    private String phone;
+    private String email;
+    @JsonIgnore
+    private String password;
+    private String avatarPath;
+    @OneToMany(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "reception_id")
+    @JsonIgnore
+
+
+}
