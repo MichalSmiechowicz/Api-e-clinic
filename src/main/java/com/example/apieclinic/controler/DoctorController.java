@@ -1,22 +1,29 @@
 package com.example.apieclinic.controler;
 
-import com.example.apieclinic.view.DoctorServiceImpl;
 import com.example.apieclinic.model.entity.Doctor;
+import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.entity.WorkHours;
+import com.example.apieclinic.view.DoctorService;
+import com.example.apieclinic.view.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/doctor")
 public class DoctorController {
-    private DoctorServiceImpl doctorService;
+
+    private final DoctorService doctorService;
+    private final UserService userService;
+
     @Autowired
-    public DoctorController(DoctorServiceImpl doctorService) {
+    public DoctorController(DoctorService doctorService, UserService userService) {
         this.doctorService = doctorService;
+        this.userService = userService;
     }
 
     @PostMapping("/addDoctor")
@@ -32,7 +39,12 @@ public class DoctorController {
     }
 
     @GetMapping("/getHoursOfDoc")
-    public List<WorkHours> getHoursOfDoc(@RequestParam("id") Long docID){
-        return doctorService.getWorkHours(docID);
+    public List<WorkHours> getHoursOfDoc(@RequestParam("id") Long docId){
+        return doctorService.getWorkHours(docId);
+    }
+
+    @GetMapping("/getMyUsers")
+    public ResponseEntity<Set<User>> getMyUsers(@RequestParam("id") Long docId){
+        return new ResponseEntity<>( doctorService.getMyUsers(docId), HttpStatus.OK);
     }
 }

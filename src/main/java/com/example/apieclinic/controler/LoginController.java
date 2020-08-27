@@ -2,8 +2,8 @@ package com.example.apieclinic.controler;
 
 import com.example.apieclinic.model.entity.Doctor;
 import com.example.apieclinic.model.entity.User;
-import com.example.apieclinic.view.DoctorServiceImpl;
-import com.example.apieclinic.view.UserServiceImpl;
+import com.example.apieclinic.view.DoctorService;
+import com.example.apieclinic.view.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +15,10 @@ import java.util.List;
 @RestController
 public class LoginController {
 
-    private final UserServiceImpl userService;
-    private final DoctorServiceImpl doctorService;
+    private final UserService userService;
+    private final DoctorService doctorService;
     @Autowired
-    public LoginController(UserServiceImpl userService, DoctorServiceImpl doctorService) {
+    public LoginController(UserService userService, DoctorService doctorService) {
         this.userService = userService;
         this.doctorService = doctorService;
     }

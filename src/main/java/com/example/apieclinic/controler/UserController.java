@@ -3,12 +3,12 @@ package com.example.apieclinic.controler;
 import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Prescription;
 import com.example.apieclinic.model.entity.User;
-import com.example.apieclinic.model.repository.UserRepo;
-import com.example.apieclinic.view.UserServiceImpl;
+import com.example.apieclinic.view.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Set;
 
 
@@ -16,18 +16,14 @@ import java.util.Set;
 @RequestMapping("/user")
 public class UserController {
 
-    private UserRepo repo;
-    private UserServiceImpl userService;
+    private final UserService userService;
+
     @Autowired
-    public UserController(UserServiceImpl userService, UserRepo repo) {
-        this.repo = repo;
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
-    public List<User> getUsers(){
-        return userService.getUsers();
-    }
+
     @GetMapping("/appointments")
     public Set<Appointment> getAppointments(@RequestParam("id") Long userID){
         return userService.getAllAppointments(userID);
@@ -35,6 +31,11 @@ public class UserController {
     @GetMapping("/prescriptions")
     public Set<Prescription> getPrescription(@RequestParam("id") Long prescriptionID){
         return userService.getPrescription(prescriptionID);
+    }
+    @PostMapping("/updateInformation")
+    public ResponseEntity updateUserInformation(@RequestBody User user){
+        userService.update(user);
+        return new ResponseEntity(HttpStatus.OK);
     }
 //    @GetMapping("/leaves")
 //    @GetMapping("/images")

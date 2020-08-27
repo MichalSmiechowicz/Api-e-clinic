@@ -1,5 +1,6 @@
 package com.example.apieclinic.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,6 +27,7 @@ public class User {
     private String gender;
     private String chronicDiseases;
     private String avatarPath;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private Set<Appointment> appointments;

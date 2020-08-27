@@ -11,7 +11,7 @@ import java.time.ZonedDateTime;
 @ControllerAdvice
 public class UserAlreadyExistExceptionHandler {
     @ExceptionHandler(value = {UserAlreadyExistException.class})
-    public ResponseEntity<Object> handelUserAlreadyExistException(UserAlreadyExistException e){
+    public ResponseEntity<Object> handleUserAlreadyExistException(UserAlreadyExistException e){
         final HttpStatus badRequest = HttpStatus.CONFLICT;
         CustomExceptionBody customExceptionBody = new CustomExceptionBody(
                 e.getMessage(),

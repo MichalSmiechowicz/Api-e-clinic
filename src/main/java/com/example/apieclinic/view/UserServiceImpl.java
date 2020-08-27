@@ -34,6 +34,14 @@ public class UserServiceImpl implements com.example.apieclinic.view.UserService 
     }
 
     @Override
+    public void update(User user) {
+        User userInDb = userRepo.findByEmail(user.getEmail());
+        user.setUserID(userInDb.getUserID());
+        userInDb = user;
+        userRepo.save(userInDb);
+    }
+
+    @Override
     public Set<Prescription> getPrescription(Long appointmentID) {
         return prescriptionRepo.findByAppointmentId(appointmentID);
     }
