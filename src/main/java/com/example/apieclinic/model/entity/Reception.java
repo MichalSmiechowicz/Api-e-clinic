@@ -22,9 +22,8 @@ public class Reception {
     @JsonIgnore
     private String password;
     private String avatarPath;
-    @OneToMany(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "reception_id")
-    @JsonIgnore
-
+    // @OneToMany(cascade = CascadeType.DETACH)
+    // @JoinColumn(name = "reception_id")
+    // @JsonIgnore
 
 }
