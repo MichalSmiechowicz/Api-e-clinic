@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+// Do testów zmienić na "*"
+@CrossOrigin(origins = "https://plusmed.cloud")
 @RestController
 public class LoginController {
 

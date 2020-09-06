@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 
+// Do testów zmienić na "*"
+@CrossOrigin(origins = "https://plusmed.cloud")
 @RestController
 @RequestMapping("/user")
 public class UserController {
