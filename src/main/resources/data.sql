@@ -3,9 +3,9 @@ USE `plusmed_db`;
 -- dummy data
 -- Doc
 
-insert into doctors (AVATAR_PATH, BIRTH_DATE  ,DESCRIPTION ,EMAIL ,NAME ,PASSWORD ,PESEL ,PHONE ,SPECIALIZATION ,SURNAME ) values('kowalski.jpg', '1984-02-13', 'descr', 'mail2', 'Krzysztof', 'pass', 'pesel','654987123','Internista', 'Kowalski');
-insert into doctors (AVATAR_PATH, BIRTH_DATE  ,DESCRIPTION ,EMAIL ,NAME ,PASSWORD ,PESEL ,PHONE ,SPECIALIZATION ,SURNAME ) values('nowak.jpg', '1985-05-01', 'descr', 'mail3', 'Adam', 'pass', 'pesel','123456789','Internista', 'Nowak');
-insert into doctors (AVATAR_PATH, BIRTH_DATE  ,DESCRIPTION ,EMAIL ,NAME ,PASSWORD ,PESEL ,PHONE ,SPECIALIZATION ,SURNAME ) values('michalik.jpg', '1970-11-23', 'descr', 'mail4', 'Jadwiga', 'pass', 'pesel','645879213','Neurolog', 'Michalik');
+insert into doctors (AVATAR_PATH, BIRTH_DATE  ,DESCRIPTION ,EMAIL ,NAME ,PASSWORD ,PESEL ,PHONE ,SPECIALIZATION ,SURNAME ) values('kowalski.jpg', '1984-02-13', 'descr', 'mail5', 'Krzysztof', 'pass', 'pesel','654987123','Internista', 'Kowalski');
+insert into doctors (AVATAR_PATH, BIRTH_DATE  ,DESCRIPTION ,EMAIL ,NAME ,PASSWORD ,PESEL ,PHONE ,SPECIALIZATION ,SURNAME ) values('nowak.jpg', '1985-05-01', 'descr', 'mail6', 'Adam', 'pass', 'pesel','123456789','Internista', 'Nowak');
+insert into doctors (AVATAR_PATH, BIRTH_DATE  ,DESCRIPTION ,EMAIL ,NAME ,PASSWORD ,PESEL ,PHONE ,SPECIALIZATION ,SURNAME ) values('michalik.jpg', '1970-11-23', 'descr', 'mail7', 'Jadwiga', 'pass', 'pesel','645879213','Neurolog', 'Michalik');
 
 -- User
 
