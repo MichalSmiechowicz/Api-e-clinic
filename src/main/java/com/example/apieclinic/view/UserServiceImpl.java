@@ -1,5 +1,6 @@
 package com.example.apieclinic.view;
 
+import com.example.apieclinic.exception.AppointmentAlreadyBookedException;
 import com.example.apieclinic.exception.UserAlreadyExistException;
 import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Prescription;
@@ -25,6 +26,15 @@ public class UserServiceImpl implements com.example.apieclinic.view.UserService 
     private PrescriptionRepo prescriptionRepo;
     private AppointmentRepo appointmentRepo;
     private DoctorRepo doctorRepo;
+
+    @Override
+    public void bookAppointment(Appointment appointment) {
+        if (appointmentRepo.existsBydateTime(appointment.getDateTime())){
+            throw new AppointmentAlreadyBookedException(appointment.getDateTime());
+        }else {
+            appointmentRepo.save(appointment);
+        }
+    }
 
     @Override
     public User getMyInfo(String mail) {
