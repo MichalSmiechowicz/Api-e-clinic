@@ -26,6 +26,7 @@ public class Doctor {
     private String specialization;
     private String description;
     private String avatarPath;
+    private String role;
     @OneToMany(cascade = CascadeType.DETACH)
     @JoinColumn(name = "doctor_id")
     @JsonIgnore

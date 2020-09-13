@@ -5,23 +5,41 @@ import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Prescription;
 import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.repository.AppointmentRepo;
+import com.example.apieclinic.model.repository.DoctorRepo;
 import com.example.apieclinic.model.repository.PrescriptionRepo;
 import com.example.apieclinic.model.repository.UserRepo;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Service
+@AllArgsConstructor(onConstructor_={@Autowired})
 public class UserServiceImpl implements com.example.apieclinic.view.UserService {
 
-    @Autowired
-    UserRepo userRepo;
-    @Autowired
-    PrescriptionRepo prescriptionRepo;
-    @Autowired
-    AppointmentRepo appointmentRepo;
+    private UserRepo userRepo;
+    private PrescriptionRepo prescriptionRepo;
+    private AppointmentRepo appointmentRepo;
+    private DoctorRepo doctorRepo;
+
+    @Override
+    public User getMyInfo(String mail) {
+        return userRepo.findByEmail(mail);
+    }
+
+    @Override
+    public Set<String> getSchedule(Long docId, Timestamp dateStart, Timestamp dateEnd) {
+        Set<Appointment> appointments = appointmentRepo.findAllByDoctorIdAndDateTimeBetween(docId, dateStart, dateEnd);
+        Set<String> schedule = new HashSet<>();
+        for (Appointment a: appointments) {
+            schedule.add(a.getDateTime().toString());
+        }
+        return schedule;
+    }
 
     @Override
     public void addUser(User user) {
