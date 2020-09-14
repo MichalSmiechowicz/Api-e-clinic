@@ -1,5 +1,6 @@
 package com.example.apieclinic.controler;
 
+import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.entity.Reception;
 import com.example.apieclinic.model.entity.WorkHours;
 import com.example.apieclinic.view.ReceptionService;
@@ -17,7 +18,6 @@ import java.util.List;
 public class ReceptionController {
 
     private final ReceptionService receptionService;
-
     @Autowired
     public ReceptionController(ReceptionService receptionService) {
         this.receptionService = receptionService;
@@ -31,10 +31,17 @@ public class ReceptionController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @GetMapping("/getAllUsers")
+    public ResponseEntity<List<User>> getAllUsers(){
+        List<User> allUsers = receptionService.getAllUsers();
+        return new ResponseEntity<>(allUsers, HttpStatus.OK);
+    }
+
     @GetMapping("/test")
     public ResponseEntity<String> home(){
         return new ResponseEntity<>("allDoctors", HttpStatus.OK);
     }
+
     @GetMapping("/getHoursOfDoc")
     public List<WorkHours> getHoursOfDoc(@RequestParam("id") Long receptionId){
         return receptionService.getWorkHours(receptionId);

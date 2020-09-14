@@ -15,5 +15,5 @@ public interface ReceptionService {
 
     List<WorkHours> getWorkHours(Long doctorId);
     void addWorkingHours(WorkHours workHours);
-
+    List<User> getAllUsers();
 }
