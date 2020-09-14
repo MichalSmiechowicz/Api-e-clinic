@@ -16,6 +16,6 @@ public interface UserService {
 //    List<Prescription> getAllPrescriptions(Long userid);
     List<User> getUsers();
     Set<String> getSchedule(Long docId, Timestamp dateStart, Timestamp dateEnd);
-
     User getMyInfo(String mail);
+    void bookAppointment(Appointment appointment);
 }

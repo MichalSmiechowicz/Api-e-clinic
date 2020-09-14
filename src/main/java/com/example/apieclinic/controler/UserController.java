@@ -26,10 +26,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/myInfo")
-    public User getMyInfo(@RequestParam("mail") String mail){
-        return userService.getMyInfo(mail);
-    };
+    @PostMapping("/bookAppointment")
+    public ResponseEntity<String> bookAppointment(@RequestBody Appointment appointment){
+        userService.bookAppointment(appointment);
+        return new ResponseEntity<>("complete", HttpStatus.OK);
+    }
 
     @GetMapping("/appointments")
     public Set<Appointment> getAppointments(@RequestParam("id") Long userID){

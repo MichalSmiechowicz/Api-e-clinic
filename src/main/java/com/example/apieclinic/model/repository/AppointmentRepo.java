@@ -12,4 +12,5 @@ public interface AppointmentRepo extends JpaRepository<Appointment, Long> {
     Set<Appointment> findByUserId(Long userId);
     Set<Appointment> findByDoctorId(Long userId);
     Set<Appointment> findAllByDoctorIdAndDateTimeBetween(Long docId, Timestamp dateTimeStart, Timestamp dateTimeEnd);
+    Boolean existsBydateTime(Timestamp dateTime);
 }
