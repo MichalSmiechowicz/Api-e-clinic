@@ -3,21 +3,15 @@ package com.example.apieclinic.view;
 
 import com.example.apieclinic.model.entity.Reception;
 import com.example.apieclinic.model.repository.ReceptionRepo;
-import com.example.apieclinic.model.entity.Appointment;
-import com.example.apieclinic.model.entity.Doctor;
-import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.entity.WorkHours;
-import com.example.apieclinic.model.repository.AppointmentRepo;
-import com.example.apieclinic.model.repository.DoctorRepo;
-import com.example.apieclinic.model.repository.UserRepo;
 import com.example.apieclinic.model.repository.WorkHoursRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Set;
+
 
 @Service
 @AllArgsConstructor(onConstructor_={@Autowired})

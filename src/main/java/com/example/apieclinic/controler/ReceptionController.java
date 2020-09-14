@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 // Do testów zmienić na "*"
@@ -28,7 +27,7 @@ public class ReceptionController {
     @PostMapping("/addReception")
     public ResponseEntity addReception(@RequestBody Reception reception){
         System.out.println(reception.toString());
-        //ReceptionService.addReception(reception);
+        receptionService.addReception(reception);
         return new ResponseEntity(HttpStatus.OK);
     }
 
