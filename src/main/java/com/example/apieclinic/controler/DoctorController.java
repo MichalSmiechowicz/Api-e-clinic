@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Set;
 
+// Do testów zmienić na "*"
+@CrossOrigin(origins = "https://plusmed.cloud")
 @RestController
 @RequestMapping("/doctor")
 public class DoctorController {

@@ -4,6 +4,7 @@ import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Prescription;
 import com.example.apieclinic.model.entity.User;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +15,7 @@ public interface UserService {
     Set<Appointment> getAllAppointments(Long userid);
 //    List<Prescription> getAllPrescriptions(Long userid);
     List<User> getUsers();
-
-
+    Set<String> getSchedule(Long docId, Timestamp dateStart, Timestamp dateEnd);
+    User getMyInfo(String mail);
+    void bookAppointment(Appointment appointment);
 }

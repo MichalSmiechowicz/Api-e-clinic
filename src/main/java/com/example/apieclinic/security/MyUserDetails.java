@@ -1,6 +1,7 @@
 package com.example.apieclinic.security;
 
 import com.example.apieclinic.model.entity.Doctor;
+import com.example.apieclinic.model.entity.Reception;
 import com.example.apieclinic.model.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,6 +21,11 @@ public class MyUserDetails implements UserDetails {
         this.email = user.getEmail();
         this.password = user.getPassword();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+    public MyUserDetails(Reception reception){
+        this.email = reception.getEmail();
+        this.password = reception.getPassword();
+        authorities.add(new SimpleGrantedAuthority("ROLE_RECEPTION"));
     }
     public MyUserDetails(Doctor doctor){
         this.email = doctor.getEmail();
