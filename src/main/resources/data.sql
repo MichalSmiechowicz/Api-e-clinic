@@ -10,13 +10,13 @@ insert into doctors (AVATAR_PATH, BIRTH_DATE  ,DESCRIPTION ,EMAIL ,NAME ,PASSWOR
 -- User
 
 insert into users (address, avatar_path, birth_date, chronic_diseases, email, gender, name, password,pesel, phone, surname, role) values('Sienkiewicza 63/14 Łódź 94-212', 'avatar path','2001-01-11', 'Alergia', 'mail1', 'm', 'Arkadiusz', 'pass', 'pesel', '600125974', 'Sikorski', 'user');
-insert into users (address, avatar_path, birth_date, chronic_diseases, email, gender, name, password,pesel, phone, surname, role) values('Łódzka 12 Tuszyn 95-080', 'avatar path','1998-04-07', 'brak', 'mail2', 'k', 'Aleksandra', 'pass', 'pesel', '798459781', 'Czerwińska', 'user');
+insert into users (address, avatar_path, birth_date, chronic_diseases, email, gender, name, password,pesel, phone, surname, role) values('Łódzka 12 Tuszyn 95-080', 'czerwinska.jpg','1998-04-07', 'brak', 'mail2', 'k', 'Aleksandra', 'pass', 'pesel', '798459781', 'Czerwińska', 'user');
 insert into users (address, avatar_path, birth_date, chronic_diseases, email, gender, name, password,pesel, phone, surname, role) values('Wschodnia 24/10 Zgierz 92-021', 'avatar path','2001-08-30', ' Astma', 'mail3', 'm', 'Marcel', 'pass', 'pesel', '500149988', 'Wróblewski', 'user');
 insert into users (address, avatar_path, birth_date, chronic_diseases, email, gender, name, password,pesel, phone, surname, role) values('Bandurskiego 33/14 Łódź 94-045', 'avatar path','1994-12-30', ' Padaczka', 'mail4', 'k', 'Lidia', 'pass', 'pesel', '658978145', 'Kucharska', 'user');
 
 -- Reception
 
-insert into reception (name, surname, phone, email, password, avatar_Path, role) values ('Janusz' , 'Xd' , '123789456', 'mail10', 'pass','cos','reception');
+insert into reception (name, surname, phone, email, password, avatar_Path, role) values ('Janusz' , 'Xd' , '123789456', 'mail10', 'pass','xd.jpg','reception');
 
 -- Appointments
 
