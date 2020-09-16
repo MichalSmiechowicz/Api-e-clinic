@@ -27,6 +27,11 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+    //TODO refactor to reasonable json
+    @GetMapping("/getAllDoctorAppointments")
+    public ResponseEntity<Set<Appointment>> getAllDoctorAppointments(@RequestParam("id") Long docId){
+        return new ResponseEntity<>(userService.getAllDoctorAppointments(docId), HttpStatus.OK);
+    }
 
     @GetMapping("/getMyPastAppointments")
     public ResponseEntity<Set<Appointment>> getMyPastAppointments(@RequestParam("id") Long userId){

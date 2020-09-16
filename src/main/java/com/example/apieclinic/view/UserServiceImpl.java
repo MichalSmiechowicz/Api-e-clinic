@@ -30,6 +30,11 @@ public class UserServiceImpl implements com.example.apieclinic.view.UserService 
     private DoctorRepo doctorRepo;
 
     @Override
+    public Set<Appointment> getAllDoctorAppointments(Long docId) {
+        return appointmentRepo.findAllByDoctorId(docId);
+    }
+
+    @Override
     public Set<AppointmentForApiInterface> getMyFutureAppointment(Long userId) {
         return appointmentRepo.findAllMyFutureAppointments(userId);
 //        Set<Appointment> appointments = appointmentRepo.findAllByUserIdAndDateTimeAfter(userId, new Timestamp(System.currentTimeMillis()));

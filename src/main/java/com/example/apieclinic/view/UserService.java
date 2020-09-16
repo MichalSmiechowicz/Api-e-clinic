@@ -24,4 +24,5 @@ public interface UserService {
     Set<Referral> getReferrals(Long userId);
     Set<AppointmentForApiInterface> getMyFutureAppointment(Long userId);
     Set<Appointment> getMyPastAppointment(Long userId);
+    Set<Appointment> getAllDoctorAppointments(Long docId);
 }
