@@ -1,5 +1,6 @@
 package com.example.apieclinic.controler;
 
+import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.entity.Reception;
 import com.example.apieclinic.model.entity.WorkHours;
@@ -24,6 +25,16 @@ public class ReceptionController {
 
     }
 
+    @PostMapping("/bookAppointment")
+    public ResponseEntity<String> bookAppointment(@RequestBody Appointment appointment){
+        receptionService.bookAppointment(appointment);
+        return new ResponseEntity<>("complete", HttpStatus.OK);
+    }
+    @GetMapping("/dropAppointment")
+    public ResponseEntity dropAppointment(@RequestParam("id") Long id){
+       receptionService.dropAppointment(id);
+       return  new ResponseEntity(HttpStatus.OK);
+    }
     @PostMapping("/addReception")
     public ResponseEntity addReception(@RequestBody Reception reception){
         System.out.println(reception.toString());

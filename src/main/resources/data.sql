@@ -33,7 +33,7 @@ insert into appointments (date_Time, diagnosis, price, recommendations,type, use
 -- Prescription
 
 insert into prescription (content, appointment_id)  values('Aponapro 2x na dobe po 1 tabletce, dużo odpoczynku' , 5);
-insert into prescription (content, appointment_id)  values('Aponapro 2x na dobe po 1 tabletce, dużo odpoczynku' , 5);
+insert into prescription (content, appointment_id)  values('Momoster 2x2' , 5);
 insert into prescription (content, appointment_id)  values('Aponapro 2x na dobe po 1 tabletce, dużo odpoczynku' , 1);
 insert into prescription (content, appointment_id)  values( 'Paracetamol przy występowaniu gorączki, Scorbolamid 2x3' , 6);
 insert into prescription (content, appointment_id)  values('brak' , 7);
@@ -41,8 +41,8 @@ insert into prescription (content, appointment_id)  values( 'brak' , 8);
 
 -- Referral
 
-insert into referrals (content, appointment_id)  values('cancer therapy' , 5);
-insert into referrals (content, appointment_id)  values('cancer therapy' , 5);
-insert into referrals (content, appointment_id)  values('cancer therapy' , 1);
-insert into referrals (content, appointment_id)  values('cancer therapy' , 6);
-insert into referrals (content, appointment_id)  values('cancer therapy' , 7);
+insert into referrals (content, appointment_id)  values('Badanie CT twarzoczaszki' , 5);
+insert into referrals (content, appointment_id)  values('Badanie osocza krwi' , 5);
+insert into referrals (content, appointment_id)  values('Badanie moczu' , 1);
+insert into referrals (content, appointment_id)  values('Wizyta u okulisty' , 6);
+insert into referrals (content, appointment_id)  values('Wiecej swiezego powietrza' , 7);
