@@ -25,7 +25,7 @@ public interface AppointmentRepo extends JpaRepository<Appointment, Long> {
     Boolean existsBydateTime(Timestamp dateTime);
 
     @Query(
-            value = "select date_Time, doctors.avatar_path, doctors.name, doctors.specialization, type from APPOINTMENTS join DOCTORS on appointments.doctor_id = doctors.doctorid \n" +
+            value = "select date_Time, doctors.avatar_path, doctors.name, doctors.specialization, type from appointments join doctors on appointments.doctor_id = doctors.doctorid \n" +
                     " WHERE user_id = ?1 AND date_Time > CURRENT_TIMESTAMP",
             nativeQuery = true)
     Set<AppointmentForApiInterface> findAllMyFutureAppointments(Long userId);
