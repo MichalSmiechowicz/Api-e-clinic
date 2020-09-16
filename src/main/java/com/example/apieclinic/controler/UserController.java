@@ -2,7 +2,9 @@ package com.example.apieclinic.controler;
 
 import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Prescription;
+import com.example.apieclinic.model.entity.Referral;
 import com.example.apieclinic.model.entity.User;
+import com.example.apieclinic.model.models.AppointmentForApiInterface;
 import com.example.apieclinic.view.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,26 @@ public class UserController {
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    @GetMapping("/getMyPastAppointments")
+    public ResponseEntity<Set<Appointment>> getMyPastAppointments(@RequestParam("id") Long userId){
+        return new ResponseEntity<>(userService.getMyPastAppointment(userId), HttpStatus.OK);
+    }
+
+    @GetMapping("/getMyFutureAppointments")
+    public ResponseEntity<Set<AppointmentForApiInterface>> getMyFutureAppointments(@RequestParam("id") Long userId){
+        return new ResponseEntity<>(userService.getMyFutureAppointment(userId), HttpStatus.OK);
+    }
+
+    @GetMapping("/getReferrals")
+    public ResponseEntity<Set<Referral>> getMyReferral(@RequestParam("id") Long userId){
+        return new ResponseEntity<>(userService.getReferrals(userId), HttpStatus.OK);
+    }
+
+    @GetMapping("/getPrescriptions")
+    public ResponseEntity<Set<Prescription>> getMyPrescriptions(@RequestParam("id") Long userId){
+        return new ResponseEntity<>(userService.getPrescriptions(userId), HttpStatus.OK);
     }
 
     @PostMapping("/bookAppointment")

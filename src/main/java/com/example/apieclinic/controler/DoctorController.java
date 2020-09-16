@@ -1,5 +1,6 @@
 package com.example.apieclinic.controler;
 
+import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Doctor;
 import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.entity.WorkHours;
@@ -26,6 +27,16 @@ public class DoctorController {
     public DoctorController(DoctorService doctorService, UserService userService) {
         this.doctorService = doctorService;
         this.userService = userService;
+    }
+
+    @GetMapping("/getMyPastAppointments")
+    public ResponseEntity<Set<Appointment>> getMyPastAppointments(@RequestParam("id") Long docId){
+        return new ResponseEntity<>(doctorService.getMyPastAppointment(docId), HttpStatus.OK);
+    }
+
+    @GetMapping("/getMyFutureAppointments")
+    public ResponseEntity<Set<Appointment>> getMyFutureAppointments(@RequestParam("id") Long docId){
+       return new ResponseEntity<>(doctorService.getMyFutureAppointment(docId), HttpStatus.OK);
     }
 
     @PostMapping("/addDoctor")

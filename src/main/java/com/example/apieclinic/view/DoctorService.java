@@ -1,5 +1,6 @@
 package com.example.apieclinic.view;
 
+import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Doctor;
 import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.entity.WorkHours;
@@ -14,4 +15,6 @@ public interface DoctorService {
     List<WorkHours> getWorkHours(Long doctorId);
     void addWorkingHours(WorkHours workHours);
     Set<User> getMyUsers(Long doctorId);
+    Set<Appointment> getMyFutureAppointment(Long docId);
+    Set<Appointment> getMyPastAppointment(Long docId);
 }

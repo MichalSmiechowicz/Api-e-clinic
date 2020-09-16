@@ -4,7 +4,9 @@ import com.example.apieclinic.exception.AppointmentAlreadyBookedException;
 import com.example.apieclinic.exception.UserAlreadyExistException;
 import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Prescription;
+import com.example.apieclinic.model.entity.Referral;
 import com.example.apieclinic.model.entity.User;
+import com.example.apieclinic.model.models.AppointmentForApiInterface;
 import com.example.apieclinic.model.repository.AppointmentRepo;
 import com.example.apieclinic.model.repository.DoctorRepo;
 import com.example.apieclinic.model.repository.PrescriptionRepo;
@@ -26,6 +28,49 @@ public class UserServiceImpl implements com.example.apieclinic.view.UserService 
     private PrescriptionRepo prescriptionRepo;
     private AppointmentRepo appointmentRepo;
     private DoctorRepo doctorRepo;
+
+    @Override
+    public Set<AppointmentForApiInterface> getMyFutureAppointment(Long userId) {
+        return appointmentRepo.findAllMyFutureAppointments(userId);
+//        Set<Appointment> appointments = appointmentRepo.findAllByUserIdAndDateTimeAfter(userId, new Timestamp(System.currentTimeMillis()));
+//        Set<AppointmentForApi> appointmentForApiSet = new HashSet<>();
+//        for (Appointment a : appointments){
+//            AppointmentForApi appointmentForApi = AppointmentForApi.builder()
+//                    .name(doctorRepo.findById(a.getDoctorId()).get().getName())
+//                    .date(a.getDateTime())
+//                    .speciality(doctorRepo.findById(a.getDoctorId()).get().getSpecialization())
+//                    .photo(doctorRepo.findById(a.getDoctorId()).get().getAvatarPath())
+//                    .visitType(a.getType()).build();
+//            appointmentForApiSet.add(appointmentForApi);
+//        }
+//        return appointmentForApiSet;
+    }
+
+    @Override
+    public Set<Appointment> getMyPastAppointment(Long userId) {
+        return appointmentRepo.findAllByUserIdAndDateTimeBefore(userId, new Timestamp(System.currentTimeMillis()));
+
+    }
+
+    @Override
+    public Set<Referral> getReferrals(Long userId) {
+        Set<Appointment> appointments = appointmentRepo.findAllByUserId(userId);
+        Set<Referral> referrals = new HashSet<>();
+        for (Appointment a: appointments) {
+            referrals.addAll(a.getReferrals());
+        }
+        return referrals;
+    }
+
+    @Override
+    public Set<Prescription> getPrescriptions(Long userId) {
+        Set<Appointment> appointments = appointmentRepo.findAllByUserId(userId);
+        Set<Prescription> prescriptions = new HashSet<>();
+        for (Appointment a: appointments) {
+            prescriptions.addAll(a.getPrescriptions());
+        }
+        return prescriptions;
+    }
 
     @Override
     public void bookAppointment(Appointment appointment) {

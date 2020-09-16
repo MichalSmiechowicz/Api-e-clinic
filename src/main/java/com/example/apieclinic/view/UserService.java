@@ -2,7 +2,9 @@ package com.example.apieclinic.view;
 
 import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Prescription;
+import com.example.apieclinic.model.entity.Referral;
 import com.example.apieclinic.model.entity.User;
+import com.example.apieclinic.model.models.AppointmentForApiInterface;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -18,4 +20,8 @@ public interface UserService {
     Set<String> getSchedule(Long docId, Timestamp dateStart, Timestamp dateEnd);
     User getMyInfo(String mail);
     void bookAppointment(Appointment appointment);
+    Set<Prescription> getPrescriptions(Long userId);
+    Set<Referral> getReferrals(Long userId);
+    Set<AppointmentForApiInterface> getMyFutureAppointment(Long userId);
+    Set<Appointment> getMyPastAppointment(Long userId);
 }
