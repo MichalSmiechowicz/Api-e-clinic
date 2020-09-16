@@ -11,6 +11,8 @@ import java.util.Set;
 
 @Repository
 public interface AppointmentRepo extends JpaRepository<Appointment, Long> {
+
+    Set<Appointment> findAllByDoctorId(Long docId);
     Set<Appointment> findByUserId(Long userId);
     Set<Appointment> findAllByUserId(Long userId);
     Set<Appointment> findByDoctorId(Long userId);
@@ -29,4 +31,6 @@ public interface AppointmentRepo extends JpaRepository<Appointment, Long> {
                     " WHERE user_id = ?1 AND date_Time > CURRENT_TIMESTAMP",
             nativeQuery = true)
     Set<AppointmentForApiInterface> findAllMyFutureAppointments(Long userId);
+
+
 }

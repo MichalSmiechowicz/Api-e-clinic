@@ -17,4 +17,5 @@ public interface DoctorService {
     Set<User> getMyUsers(Long doctorId);
     Set<Appointment> getMyFutureAppointment(Long docId);
     Set<Appointment> getMyPastAppointment(Long docId);
+    Set<Appointment> getAllMyAppointments(Long docId);
 }

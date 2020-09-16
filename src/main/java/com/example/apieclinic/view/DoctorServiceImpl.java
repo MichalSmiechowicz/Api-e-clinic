@@ -27,6 +27,11 @@ public class DoctorServiceImpl implements DoctorService{
     private final WorkHoursRepo workHoursRepo;
 
     @Override
+    public Set<Appointment> getAllMyAppointments(Long docId) {
+        return appointmentRepo.findAllByDoctorId(docId);
+    }
+
+    @Override
     public Set<Appointment> getMyPastAppointment(Long docId) {
         return appointmentRepo.findAllByDoctorIdAndDateTimeBefore(docId, new Timestamp(System.currentTimeMillis()));
     }

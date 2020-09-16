@@ -29,6 +29,12 @@ public class DoctorController {
         this.userService = userService;
     }
 
+    @GetMapping("/getAllMyAppointments")
+    public ResponseEntity<Set<Appointment>> getAllMyAppointments(@RequestParam("id") Long docId){
+        return new ResponseEntity<>(doctorService.getAllMyAppointments(docId), HttpStatus.OK);
+    }
+
+
     @GetMapping("/getMyPastAppointments")
     public ResponseEntity<Set<Appointment>> getMyPastAppointments(@RequestParam("id") Long docId){
         return new ResponseEntity<>(doctorService.getMyPastAppointment(docId), HttpStatus.OK);
