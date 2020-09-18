@@ -7,10 +7,7 @@ import com.example.apieclinic.model.entity.Prescription;
 import com.example.apieclinic.model.entity.Referral;
 import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.models.AppointmentForApiInterface;
-import com.example.apieclinic.model.repository.AppointmentRepo;
-import com.example.apieclinic.model.repository.DoctorRepo;
-import com.example.apieclinic.model.repository.PrescriptionRepo;
-import com.example.apieclinic.model.repository.UserRepo;
+import com.example.apieclinic.model.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +25,7 @@ public class UserServiceImpl implements com.example.apieclinic.view.UserService 
     private PrescriptionRepo prescriptionRepo;
     private AppointmentRepo appointmentRepo;
     private DoctorRepo doctorRepo;
+    private ReceptionRepo receptionRepo;
 
     @Override
     public Set<Appointment> getAllDoctorAppointments(Long docId) {
@@ -35,8 +33,12 @@ public class UserServiceImpl implements com.example.apieclinic.view.UserService 
     }
 
     @Override
-    public Set<AppointmentForApiInterface> getMyFutureAppointment(Long userId) {
-        return appointmentRepo.findAllMyFutureAppointments(userId);
+    public Set<Appointment> getMyFutureAppointment(Long userId) {
+        return appointmentRepo.findAllByUserIdAndDateTimeAfter(userId, new Timestamp(System.currentTimeMillis()));
+
+//        return appointmentRepo.findAllMyFutureAppointments(userId);
+
+
 //        Set<Appointment> appointments = appointmentRepo.findAllByUserIdAndDateTimeAfter(userId, new Timestamp(System.currentTimeMillis()));
 //        Set<AppointmentForApi> appointmentForApiSet = new HashSet<>();
 //        for (Appointment a : appointments){
@@ -103,11 +105,11 @@ public class UserServiceImpl implements com.example.apieclinic.view.UserService 
 
     @Override
     public void addUser(User user) {
-        if (!userRepo.existsByEmail(user.getEmail())){
-            userRepo.save(user);
-        }else {
+        String mail = user.getEmail();
+        if (userRepo.existsByEmail(mail) || doctorRepo.existsByEmail(mail) || receptionRepo.existsByEmail(mail)){
             throw new UserAlreadyExistException(user.getEmail());
-//            throw new UserAlreadyExistException(user.getEmail());
+        }else {
+            userRepo.save(user);
         }
     }
 

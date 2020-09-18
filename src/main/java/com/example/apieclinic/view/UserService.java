@@ -22,7 +22,7 @@ public interface UserService {
     void bookAppointment(Appointment appointment);
     Set<Prescription> getPrescriptions(Long userId);
     Set<Referral> getReferrals(Long userId);
-    Set<AppointmentForApiInterface> getMyFutureAppointment(Long userId);
+    Set<Appointment> getMyFutureAppointment(Long userId);
     Set<Appointment> getMyPastAppointment(Long userId);
     Set<Appointment> getAllDoctorAppointments(Long docId);
 }

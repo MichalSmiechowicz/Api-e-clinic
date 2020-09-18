@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReceptionRepo extends JpaRepository<Reception, Long> {
     Reception findByEmail(String email);
+    Boolean existsByEmail(String email);
 }

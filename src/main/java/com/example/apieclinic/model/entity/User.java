@@ -1,8 +1,10 @@
 package com.example.apieclinic.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.boot.context.properties.bind.DefaultValue;
+
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -24,6 +26,7 @@ public class User {
     private String phone;
     private String email;
     @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String gender;
     private String chronicDiseases;

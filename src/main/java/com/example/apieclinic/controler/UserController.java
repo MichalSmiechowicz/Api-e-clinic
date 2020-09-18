@@ -4,7 +4,6 @@ import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Prescription;
 import com.example.apieclinic.model.entity.Referral;
 import com.example.apieclinic.model.entity.User;
-import com.example.apieclinic.model.models.AppointmentForApiInterface;
 import com.example.apieclinic.view.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,7 +38,7 @@ public class UserController {
     }
 
     @GetMapping("/getMyFutureAppointments")
-    public ResponseEntity<Set<AppointmentForApiInterface>> getMyFutureAppointments(@RequestParam("id") Long userId){
+    public ResponseEntity<Set<Appointment>> getMyFutureAppointments(@RequestParam("id") Long userId){
         return new ResponseEntity<>(userService.getMyFutureAppointment(userId), HttpStatus.OK);
     }
 
