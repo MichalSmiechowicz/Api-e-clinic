@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -34,7 +35,10 @@ public class ReceptionServiceImpl implements ReceptionService{
     }else {
         appointmentRepo.save(appointment);
     }}
-
+    @Override
+    public Set<Appointment> getAllDoctorAppointments(Long docId){
+        return appointmentRepo.findAllByDoctorId(docId);
+    }
     @Override
     public void dropAppointment(Long id) {
         if(appointmentRepo.findById(id).get().getDateTime().after(new Timestamp(System.currentTimeMillis())))

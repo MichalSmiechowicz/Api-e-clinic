@@ -16,4 +16,5 @@ public interface ReceptionService {
     List<User> getAllUsers();
     void bookAppointment(Appointment apointment);
     void dropAppointment(Long id);
+    Set<Appointment> getAllDoctorAppointments(Long docId);
 }

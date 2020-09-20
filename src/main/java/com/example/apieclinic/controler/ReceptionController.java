@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Set;
 
 // Do testów zmienić na "*"
 @CrossOrigin(origins = "https://plusmed.cloud")
@@ -24,7 +25,10 @@ public class ReceptionController {
         this.receptionService = receptionService;
 
     }
-
+    @GetMapping("/getAllDoctorAppointments")
+    public ResponseEntity<Set<Appointment>> getAllDoctorAppointments(@RequestParam("id") Long docId){
+        return new ResponseEntity<>(receptionService.getAllDoctorAppointments(docId), HttpStatus.OK);
+    }
     @PostMapping("/bookAppointment")
     public ResponseEntity<String> bookAppointment(@RequestBody Appointment appointment){
         receptionService.bookAppointment(appointment);
