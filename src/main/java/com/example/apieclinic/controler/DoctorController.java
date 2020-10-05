@@ -1,5 +1,6 @@
 package com.example.apieclinic.controler;
 
+import com.example.apieclinic.model.entity.Appointment;
 import com.example.apieclinic.model.entity.Doctor;
 import com.example.apieclinic.model.entity.User;
 import com.example.apieclinic.model.entity.WorkHours;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Set;
 
+// Do testów zmienić na "*"
+@CrossOrigin(origins = "https://plusmed.cloud")
 @RestController
 @RequestMapping("/doctor")
 public class DoctorController {
@@ -24,6 +27,22 @@ public class DoctorController {
     public DoctorController(DoctorService doctorService, UserService userService) {
         this.doctorService = doctorService;
         this.userService = userService;
+    }
+
+    @GetMapping("/getAllMyAppointments")
+    public ResponseEntity<Set<Appointment>> getAllMyAppointments(@RequestParam("id") Long docId){
+        return new ResponseEntity<>(doctorService.getAllMyAppointments(docId), HttpStatus.OK);
+    }
+
+
+    @GetMapping("/getMyPastAppointments")
+    public ResponseEntity<Set<Appointment>> getMyPastAppointments(@RequestParam("id") Long docId){
+        return new ResponseEntity<>(doctorService.getMyPastAppointment(docId), HttpStatus.OK);
+    }
+
+    @GetMapping("/getMyFutureAppointments")
+    public ResponseEntity<Set<Appointment>> getMyFutureAppointments(@RequestParam("id") Long docId){
+       return new ResponseEntity<>(doctorService.getMyFutureAppointment(docId), HttpStatus.OK);
     }
 
     @PostMapping("/addDoctor")

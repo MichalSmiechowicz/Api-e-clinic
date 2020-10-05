@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.util.Set;
 
 @Data
 @Entity
@@ -22,6 +20,7 @@ public class Reception {
     @JsonIgnore
     private String password;
     private String avatarPath;
+    private String role;
     // @OneToMany(cascade = CascadeType.DETACH)
     // @JoinColumn(name = "reception_id")
     // @JsonIgnore

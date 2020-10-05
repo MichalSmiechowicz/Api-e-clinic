@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +25,21 @@ public class DoctorServiceImpl implements DoctorService{
     private final UserRepo userRepo;
     private final AppointmentRepo appointmentRepo;
     private final WorkHoursRepo workHoursRepo;
+
+    @Override
+    public Set<Appointment> getAllMyAppointments(Long docId) {
+        return appointmentRepo.findAllByDoctorId(docId);
+    }
+
+    @Override
+    public Set<Appointment> getMyPastAppointment(Long docId) {
+        return appointmentRepo.findAllByDoctorIdAndDateTimeBefore(docId, new Timestamp(System.currentTimeMillis()));
+    }
+
+    @Override
+    public Set<Appointment> getMyFutureAppointment(Long docId) {
+        return appointmentRepo.findAllByDoctorIdAndDateTimeAfter(docId, new Timestamp(System.currentTimeMillis()));
+    }
 
     @Override
     public Set<User> getMyUsers(Long doctorId) {

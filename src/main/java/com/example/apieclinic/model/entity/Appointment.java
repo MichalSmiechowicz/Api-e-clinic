@@ -35,7 +35,11 @@ public class Appointment {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.DETACH)
     @JoinColumn(name = "appointment_id")
-    private Set<AttachedImage> SickLeaves;
+    private Set<AttachedImage> sickLeaves;
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "appointment_id")
+    private Set<Referral> referrals;
 //    @ManyToOne
 //    private User user;
 //    @ManyToOne

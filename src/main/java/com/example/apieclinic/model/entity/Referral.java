@@ -5,20 +5,16 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Entity
 @Data
-@Table(name = "prescription")
-public class Prescription {
+@Entity
+@Table(name = "referrals")
+public class Referral {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
-    private Long prescriptionID;
+    private Long referralId;
     private String content;
     @JsonIgnore
     @Column(name = "appointment_id")
     private Long appointmentId;
-
-//    @ManyToOne
-//    private Appointment appointment;
-
 }
